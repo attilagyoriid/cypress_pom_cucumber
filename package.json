@@ -1,0 +1,74 @@
+{
+  "name": "cypress-cucumber-allure-visual-testing",
+  "version": "1.0.0",
+  "description": "This project is a cypress front-end testing framework with visual testing and allure report being integrated.",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run --env allure=true",
+    "cy:run:chrome": "cypress run --env allure=true --browser chrome",
+    "cy:run:webkit": "cypress run --env allure=true --browser webkit",
+    "cy:run:firefox": "cypress run --env allure=true --browser firefox",
+    "cy:run:debug": "set DEBUG=cypress:* && cypress run --env allure=true",
+    "cy:open": "npx cypress open",
+    "visual:regenerate:all:baseimages": "cypress-image-diff -u",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:clear": "if exist allure-results rmdir /q /s allure-results && if exist allure-report rmdir /q /s allure-report && npm run allure:visual:clear",
+    "allure:delete": "del-cli --force allure-report/* && del-cli --force allure-results && del-cli --force cypress/screenshots && del-cli --force cypress/videos",
+    "allure:visual:clear": "if exist cypress/screenshots rmdir /q /s cypress/screenshots && if exist cypress/videos rmdir /q /s cypress/videos",
+    "pretest": "npm run allure:clear",
+    "test": "npm run cy:run || npm run posttest",
+    "test:chrome": "npm run allure:delete && npm run cy:run:chrome || npm run posttest",
+    "test:firefox": "npm run allure:delete && npm run cy:run:firefox || npm run posttest",
+    "test:webkit": "npm run allure:delete && npm run cy:run:webkit || npm run posttest",
+    "posttest": "npm run allure:report",
+    "cypress:runner": "cypress open --e2e --browser chrome",
+    "clean:folders": "rm -R -f allure-report && rm -R -f allure-results && rm -R -f cypress/screenshots && rm -R -f cypress/videos",
+    "beforetest": "npm run clean:folders",
+    "tests": "npm run cy:run || npm run aftertest",
+    "aftertest": "npm run allure:report",
+    "cypress:execution": "cypress run --spec cypress/e2e/features/*",
+    "cypress:execution-tags": "cypress run --env tags=@mobile",
+    "e2e:record:chrome": "cypress run --browser chrome",
+    "cypress:execution-allure": "cypress run --env allure=true",
+    "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "cucumber",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "@cypress/webpack-preprocessor": "^5.17.1",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@shelex/cypress-allure-plugin": "^2.38.4",
+    "allure-commandline": "^2.21.0",
+    "babel-loader": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "cy-verify-downloads": "^0.1.14",
+    "cypress": "^12.11.0",
+    "cypress-image-diff-js": "^1.23.0",
+    "cypress-log-to-output": "^1.1.2",
+    "cypress-terminal-report": "^5.2.0",
+    "esbuild": "^0.16.4",
+    "mocha-allure-reporter": "^1.4.0",
+    "multiple-cucumber-html-reporter": "^3.0.1",
+    "node-stdlib-browser": "^1.2.0",
+    "playwright-webkit": "^1.34.0",
+    "webpack": "^5.82.0"
+  },
+  "dependencies": {
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "crypto2": "^2.0.0",
+    "del-cli": "^5.0.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/*.js",
+    "cucumberJson": {
+      "generate": true
+    }
+  }
+}

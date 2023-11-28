@@ -1,0 +1,30 @@
+#Base image taken from:https://hub.docker.com/r/cypress/browsers/tags
+FROM cypress/included:cypress-12.13.0-node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
+#Create the folder where our project will be stored
+RUN mkdir /front-end-test
+#We make it our workdirectory
+WORKDIR /front-end-test
+#Let's copy the essential files that we MUST use to run our scripts.
+COPY ./package.json .
+COPY ./cucumber-html-report.js .
+COPY ./jsconfig.json .
+COPY ./.cypress-cucumber-preprocessorrc.json .
+COPY ./webpack.config.js .
+COPY ./cypress.config.js .
+COPY ./cypress ./cypress
+#Install the cypress dependencies in the work directory
+RUN npm install --legacy-peer-deps
+#Executable commands the container will use[Exec Form]
+ENTRYPOINT ["npm", "run"]
+
+#With CMD in this case, we can specify more parameters to the last entrypoint.
+
+
+#To build this image just use the following command line(just as an example, use your tag name:version as prefered.):
+#docker build -t cucumberproject:1.0 .
+
+#To run an example:
+#TAG INSTANCE: docker run -i -t cucumberproject:1.0 cypress run --spec cypress/e2e/features/* --env tags=@mobile
+#CHROME INSTANCE: docker run -i -t cucumberproject:1.0 cypress run --spec cypress/e2e/features/* --browser chrome
+#FIREFOX INSTANCE: docker run -i -t cucumberproject:1.0 cypress run --spec cypress/e2e/features/* --browser firefox
+# Volume config sample for Windows: -v "%cd%":/cucumberproject
