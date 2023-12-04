@@ -20,13 +20,10 @@ Integrated with:
 
 ## 🚀 Install the project
 
-Install project dependencies with: npm i
+Install project dependencies with:
+in root directory: npm i --force
+in system-under-test directory: npm i --force
 
 ## Run the demo:
 
-1. Standard Execution: npm run cypress:execution
-2. Native report(with JSON FORMATTER): Check how to do it in this video: [Cucumber BDD Report - YouTube](https://www.youtube.com/watch?v=5AGXK9cL2fs&t=2s&ab_channel=JoanMedia)
-3. Allure Report:
-   1. npm run cypress:execution-allure
-   2. npm run allure:report
-   3. allure open
+1. Standard Execution: npm run start:app:test
