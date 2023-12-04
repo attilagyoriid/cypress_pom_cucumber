@@ -12,11 +12,11 @@ Website: https://attila-gyori.com
 
 Integrated with:
 
-- [x] https://github.com/badeball/cypress-cucumber-preprocessor
-- [x] https://github.com/bahmutov/cypress-esbuild-preprocessor
-- [x] https://www.npmjs.com/package/multiple-cucumber-html-reporter
-- [x] https://github.com/cucumber/json-formatter
-- [x] https://github.com/Shelex/cypress-allure-plugin
+- [x] multiple-cucumber-html-reporter
+- [x] @badeball/cypress-cucumber-preprocessor
+- [x] cypress-image-diff-js
+- [x] @shelex/cypress-allure-plugin
+- [x] @bahmutov/cypress-esbuild-preprocessor
 
 ## 🚀 Install the project
 
