@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 import FormLayoutsPage from "./formLayoutsPage";
-import SidebarComponent from "./components/SidebarComponent";
+import SidebarComponent from "./components/sidebarComponent";
 
 class PageManager {
   private readonly _formLayoutsPage: FormLayoutsPage;
