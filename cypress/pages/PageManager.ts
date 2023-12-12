@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import FormLayoutsPage from "./FormLayoutsPage";
+import FormLayoutsPage from "./formLayoutsPage";
 import SidebarComponent from "./components/SidebarComponent";
 
 class PageManager {
