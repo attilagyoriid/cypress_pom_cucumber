@@ -15,7 +15,7 @@ const getCompareSnapshotsPlugin = require("cypress-image-diff-js/dist/plugin");
 
 const path = require("path");
 
-const URL = process.env.URL || "http://localhost:3000/view";
+const URL = process.env.URL || "http://localhost:4200";
 
 async function setupNodeEvents(on, config) {
   await addCucumberPreprocessorPlugin(on, config);
@@ -88,7 +88,9 @@ module.exports = defineConfig({
     viewportWidth: 1920,
     viewportHeight: 1080,
     specPattern: "cypress/e2e/features/*.feature",
-    stepDefinitions: "cypress/e2e/step_definitions/*.js",
+    excludeSpecPattern: "cypress/e2e/features/experiment/*.feature",
+    stepDefinitions: "cypress/e2e/step_definitions/*Steps.ts",
+
     baseUrl: URL,
     chromeWebSecurity: false,
     screenshotOnRunFailure: true,

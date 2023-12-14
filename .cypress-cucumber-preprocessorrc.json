@@ -12,11 +12,11 @@
     "enabled": false
   },
   "stepDefinitions": [
-    "[filepath]/**/*.{js,ts}",
-    "[filepath].{js,ts}",
-    "cypress/e2e/step_definitions/*.{js,ts}",
-    "[filepath]\\***.{js,ts}",
-    "[filepath].{js,ts}",
-    "cypress\\e2e\\step_definitions\\*.{js,ts}"
+    "[filepath]/**/*.ts",
+    "[filepath].ts",
+    "cypress/e2e/step_definitions/*.ts",
+    "[filepath]\\***.ts",
+    "[filepath].ts",
+    "cypress\\e2e\\step_definitions\\*.ts"
   ]
 }

@@ -3,7 +3,7 @@
 import FormLayoutsPage from "./formLayoutsPage";
 import SidebarComponent from "./components/sidebarComponent";
 
-class PageManager {
+export class PageManager {
   private readonly _formLayoutsPage: FormLayoutsPage;
   private readonly _sidebarComponent: SidebarComponent;
 
