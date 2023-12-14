@@ -27,3 +27,4 @@ in system-under-test directory: npm i --force
 ## Run the demo:
 
 1. Standard Execution: npm run start:app:test
+2. Generate report: npm run allure:report
